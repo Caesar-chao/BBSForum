@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index/common/header :: head(~{::title})">
+  <title>错误</title>
+</head>
+<body>
+
+<!--导航栏 -->
+<div th:replace="index/common/navbar :: navbar(1)"></div>
+
+<div th:replace="index/common/category :: category" class="fly-panel fly-column"></div>
+
+<div class="layui-container fly-marginTop">
+	<div class="fly-panel">
+	  <div class="fly-none">
+	    <h2><i class="iconfont icon-tishilian"></i></h2>
+      <p th:text="${message}">这是一个基于 layui 的极简通用型社区页面模版</p>
+	  </div>
+	</div>
+</div>
+
+<footer th:replace="index/common/footer :: footer" ></footer>
+
+</body>
+</html>

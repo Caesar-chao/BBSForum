@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index/common/header :: head(~{::title})">
+  <title>用户中心</title>
+</head>
+<body>
+
+<div th:replace="index/common/navbar :: navbar(1)"></div>
+
+<div class="layui-container fly-marginTop fly-user-main">
+  <ul th:replace="index/common/sidebar :: sidebar(2)"></ul>
+  <div class="site-tree-mobile layui-hide">
+    <i class="layui-icon">&#xe602;</i>
+  </div>
+  <div class="site-mobile-shade"></div>
+  
+  <div class="site-tree-mobile layui-hide">
+    <i class="layui-icon">&#xe602;</i>
+  </div>
+  <div class="site-mobile-shade"></div>
+  
+  
+  <div class="fly-panel fly-panel-user" pad20>
+    <!--
+    <div class="fly-msg" style="margin-top: 15px;">
+      您的邮箱尚未验证，这比较影响您的帐号安全，<a href="activate.html">立即去激活？</a>
+    </div>
+    -->
+    <div class="layui-tab layui-tab-brief" lay-filter="user">
+      <ul class="layui-tab-title" id="LAY_mine">
+        <li data-type="mine-jie" lay-id="index" class="layui-this">我发的帖（<span>89</span>）</li>
+        <li data-type="collection" data-url="/collection/find/" lay-id="collection">我发表的评论（<span>10</span>）</li>
+      </ul>
+      <div class="layui-tab-content" style="padding: 20px 0;">
+        <div class="layui-tab-item layui-show">
+          <ul class="mine-view jie-row" th:each="article: ${articles}">
+            <li>
+              <span class="layui-badge fly-jing" th:if="${article.getRefinement()}==1">精</span>
+              <a class="jie-title" href="../jie/detail.html" target="_blank" th:text="${article.getTitle()}">基于 layui 的极简社区页面模版</a>
+              <i th:text="${#dates.format(article.getCreateTime(),'yyyy-MM-dd')}">2017/3/14 上午8:30:00</i>
+              <a class="mine-edit" th:href="@{/article/detail/{id}(id=${article.getId()})}">详情</a>
+              <em class="layui-hide-xs"><span th:text="${article.getGoodNum()}"></span>赞/<span th:text="${article.getCommentNum()}"></span>答</em>
+            </li>
+          </ul>
+          <div id="LAY_page"></div>
+        </div>
+        <div class="layui-tab-item">
+          <ul class="mine-view jie-row" th:each="comment: ${comments}">
+            <li>
+              <p>
+                <span th:text="${#dates.format(comment.getComment_time(),'yyyy-MM-dd')}"></span>发表评论：
+                <a th:href="@{/article/detail/{id}(id=${comment.getArticle_id()})}" th:text="${comment.getComment_content()}">tips能同时渲染多个吗?</a>
+              </p>
+            </li>
+          </ul>
+          <div id="LAY_page1"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer th:replace="index/common/footer :: footer" ></footer>
+
+</body>
+</html>

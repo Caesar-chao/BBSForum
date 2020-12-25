@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏</title>
+</head>
+<body>
+<div th:fragment="navbar(n)" class="fly-header layui-bg-black">
+    <div class="layui-container" style="display: flex;align-content: center" >
+        <a class="layui-text fly-logo " style="margin-top :8px;font-size: 32px; color: teal;font-weight: bolder" href="/">
+            湖畔论坛
+        </a>
+        <ul class="layui-nav fly-nav layui-hide-xs">
+            <li class="layui-nav-item" th:classappend="${n==1} ? 'layui-this'">
+                <a th:href="@{/index}" ><i class="iconfont icon-jiaoliu"></i>首页</a>
+            </li>
+            <li class="layui-nav-item" th:classappend="${n==2} ? 'layui-this'">
+                <a th:href="@{/status/1}" ><i class="iconfont icon-iconmingxinganli"></i>VIP专区</a>
+            </li>
+            <li class="layui-nav-item" th:classappend="${n==3} ? 'layui-this'">
+                <a th:href="@{/status/2}" ><i class="iconfont icon-ui"></i>SVIP专区</a>
+            </li>
+        </ul>
+        <ul class="layui-nav fly-nav-user" th:if="${#strings.isEmpty(session.userName)}">
+            <!-- 未登入的状态 -->
+            <li class="layui-nav-item" >
+                <a class="iconfont icon-touxiang layui-hide-xs" th:href="@{/user/loginPage}"></a>
+            </li>
+            <li class="layui-nav-item">
+                <a th:href="@{/index/loginPage}">登录</a>
+            </li>
+            <li class="layui-nav-item">
+                <a th:href="@{/index/registerPage}">注册</a>
+            </li>
+            <li class="layui-nav-item layui-hide-xs">
+                <a href="/app/qq/" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" title="QQ登入" class="iconfont icon-qq"></a>
+            </li>
+            <li class="layui-nav-item layui-hide-xs">
+                <a href="/app/weibo/" onclick="layer.msg('正在通过微博登入', {icon:16, shade: 0.1, time:0})" title="微博登入" class="iconfont icon-weibo"></a>
+            </li>
+        </ul>
+
+        <ui class="layui-nav layui-nav-tree  fly-nav-user" style="margin-top :8px;" lay-filter="filter" th:unless="${#strings.isEmpty(session.userName)}">
+            <!-- 登入后的状态 -->
+            <li class="layui-nav-item">
+                <a class="fly-nav-avatar" href="javascript:;">
+                    <cite class="layui-hide-xs" th:text="${session.userName}"></cite>
+                    <i class="iconfont icon-renzheng layui-hide-xs" title="认证信息：layui 作者"></i>
+                    <i class=" fly-badge-vip " th:text="LV+${session.userStatus}">VIP3</i>
+                    <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg">
+                </a>
+                <dl class="layui-nav-child layui-bg-green">
+                    <dd><a class="layui-bg-green" th:href="@{/user/set}"><i class="layui-icon">&#xe620;</i>基本设置</a></dd>
+                    <dd><a class="layui-bg-green" th:href="@{/user/message}"><i class="iconfont icon-tongzhi" style="top: 4px;"></i>我的消息</a></dd>
+                    <dd><a class="layui-bg-green" th:href="@{/user/home}"><i class="layui-icon" style="margin-left: 2px; width: 100%; font-size: 22px;">&#xe68e;</i>我的主页</a></dd>
+                    <hr style="margin: 1px 0;">
+                    <dd><a th:href="@{/index/loginout}" style="text-align: center;" class="layui-bg-green">退出</a></dd>
+                </dl>
+            </li>
+        </ui>
+    </div>
+    <script>
+        layui.use('element', function(){
+            var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+            //监听导航点击
+            element.on('nav(filter)', function(elem){
+                //console.log(elem)
+                layer.msg(elem.text());
+            });
+        });
+    </script>
+</div>
+</body>
+</html>

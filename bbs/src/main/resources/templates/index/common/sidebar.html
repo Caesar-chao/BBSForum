@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏</title>
+</head>
+<body>
+<ul th:fragment="sidebar(n)" class="layui-nav layui-nav-tree layui-inline" lay-filter="user">
+    <li class="layui-nav-item" th:classappend="${n==1} ? 'layui-this'">
+        <a th:href="@{/user/home}">
+            <i class="layui-icon">&#xe609;</i>
+            我的主页
+        </a>
+    </li>
+    <li class="layui-nav-item" th:classappend="${n==2} ? 'layui-this'">
+        <a th:href="@{/user/index}">
+            <i class="layui-icon">&#xe612;</i>
+            用户中心
+        </a>
+    </li>
+    <li class="layui-nav-item " th:classappend="${n==3} ? 'layui-this'">
+        <a th:href="@{/user/set}">
+            <i class="layui-icon">&#xe620;</i>
+            基本设置
+        </a>
+    </li>
+    <li class="layui-nav-item" th:classappend="${n==4} ? 'layui-this'">
+        <a th:href="@{/user/message}">
+            <i class="layui-icon">&#xe611;</i>
+            我的消息
+        </a>
+    </li>
+</ul>
+
+</body>
+</html>

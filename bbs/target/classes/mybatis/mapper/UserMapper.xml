@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yujian.mapper.UserMapper">
+    <select id="queryUserList" resultType="user">
+        select * from user
+    </select>
+
+    <select id="queryUserByUsernameAndPassword" resultType="com.yujian.pojo.User">
+        select * from user
+        where username = #{username} and password = #{password};
+    </select>
+
+    <!--对象中的属性，可以直接取出来    传递map的key-->
+    <insert id="addUser" parameterType="map">
+        insert into bbs.user (username, password,nickname,tel,email,status) values (#{username},#{password},#{nickname},#{tel},#{email},#{status});
+    </insert>
+    <!-- 信息修改-->
+    <update id="updateUser" parameterType="map">
+        update bbs.user
+        <trim prefix="set" suffixOverrides=",">
+            <if test="username!=null">username=#{username},</if>
+            <if test="password!=null">password=#{password},</if>
+            <if test="nickname!=null">nickname=#{nickname},</if>
+            <if test="signature!=null">signature=#{signature},</if>
+            <if test="tel!=null">tel=#{tel},</if>
+            <if test="email!=null">email=#{email},</if>
+            <if test="integral!=null">integral=#{integral},</if>
+            <if test="status!=null">status=#{status},</if>
+        </trim>
+        where id = #{id};
+    </update>
+    <!--根据id查询用户-->
+    <select id="queryById" resultType="com.yujian.pojo.User">
+        select * from bbs.user where id = #{id} ;
+    </select>
+
+    <!--==========================后台==========================-->
+    <select id="queryAllUser" resultType="com.yujian.pojo.User">
+        select * from bbs.user;
+    </select>
+    <!--根据id删除用户-->
+    <delete id="deleteUserById" >
+       delete from bbs.user where id = #{id};
+    </delete>
+</mapper>
+

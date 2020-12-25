@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yujian.mapper.ArticleMapper">
+    <!--根据id查询文章-->
+    <select id="queryArticleInfoById" resultType="com.yujian.dto.ArticleInfo">
+        select a.id, a.title,a.summary, a.content, a.create_time, a.goodNum, a.commentNum,a.isTop,a.grade,a.refinement, u.nickname,u.integral, u.status, u.tel, c.name
+        from  bbs.article a,bbs.user u ,bbs.category c
+        where a.user_id=u.id and a.category_id=c.id and a.id=#{id} ;
+    </select>
+    <!--查询所以的文章-->
+    <select id="queryAllArticleInfoByTime" resultType="com.yujian.dto.ArticleInfo">
+        select a.id, a.title,a.summary, a.content, a.create_time, a.goodNum, a.commentNum,a.isTop,a.grade,a.refinement,a.user_id,a.category_id,u.nickname,u.integral, u.status, u.tel, c.name
+        from  bbs.article a,bbs.user u ,bbs.category c
+        where a.user_id=u.id and a.category_id=c.id  order by a.create_time desc;
+    </select>
+    <!--置顶功能-->
+    <select id="queryArticleByIsTop" resultType="com.yujian.dto.ArticleInfo">
+        select a.id, a.title,a.summary, a.content, a.create_time, a.goodNum, a.commentNum, a.isTop,a.grade,a.refinement, u.nickname,u.integral, u.status, u.tel, c.name
+        from  bbs.article a,bbs.user u ,bbs.category c
+        where a.user_id=u.id and a.category_id=c.id and a.isTop=1;
+    </select>
+
+    <!--对象中的属性，可以直接取出来    传递map的key-->
+    <insert id="addArticle" parameterType="map">
+        insert into bbs.article (title, summary,content,create_time,isTop,grade,refinement,user_id,category_id)
+        values (#{title},#{summary},#{content},#{create_time},#{isTop},#{grade},#{refinement},#{user_id},#{category_id});
+    </insert>
+
+    <!--根据类别查询文章-->
+    <select id="queryArticleByCategory" resultType="com.yujian.dto.ArticleInfo">
+        select a.id, a.title,a.summary, a.content, a.create_time, a.goodNum, a.commentNum, a.isTop,a.grade,a.refinement, u.nickname,u.integral, u.status, u.tel, c.name
+        from  bbs.article a,bbs.user u ,bbs.category c
+        where a.user_id=u.id and a.category_id=c.id and c.id=#{id};
+    </select>
+    <!--根据权限 vip svip专属 查询文章-->
+    <select id="queryArticleByStatus" resultType="com.yujian.dto.ArticleInfo">
+        select a.id, a.title,a.summary, a.content, a.create_time, a.goodNum, a.commentNum, a.isTop,a.grade,a.refinement, u.nickname,u.integral, u.status, u.tel, c.name
+        from  bbs.article a,bbs.user u ,bbs.category c
+        where a.user_id=u.id and a.category_id=c.id and a.grade=#{id};
+    </select>
+
+    <!--根据用户id查询文章-->
+    <select id="queryArticleByUserId" resultType="com.yujian.pojo.Article">
+    select * from  bbs.article where user_id=#{id}   order by create_time desc LIMIT 10;
+    </select>
+    <!--根据用评论数查询文章-->
+    <select id="queryArticleByCommentNum" resultType="com.yujian.pojo.Article">
+    select * from  bbs.article  order by commentNum desc LIMIT 10;
+    </select>
+    <update id="updateCommentNum" >
+        update bbs.article set commentNum=commentNum+1 where id = #{id}
+    </update>
+    <!--=============后台===================-->
+    <select id="queryAllArticleInfoById" resultType="com.yujian.dto.ArticleInfo">
+        select a.id, a.title,a.summary, a.content, a.create_time, a.goodNum, a.commentNum,a.isTop,a.grade,a.refinement,a.user_id,a.category_id ,u.nickname,u.integral, u.status, u.tel, c.name
+        from  bbs.article a,bbs.user u ,bbs.category c
+        where a.user_id=u.id and a.category_id=c.id ;
+    </select>
+
+    <!-- 信息修改-->
+    <update id="updateArticle" parameterType="map">
+        update bbs.article
+        <trim prefix="set" suffixOverrides=",">
+            <if test="title!=null">title=#{title},</if>
+            <if test="summary!=null">summary=#{summary},</if>
+            <if test="content!=null">content=#{content},</if>
+            <if test="createTime!=null">createTime=#{createTime},</if>
+            <if test="goodNum!=null">goodNum=#{goodNum},</if>
+            <if test="commentNum!=null">commentNum=#{commentNum},</if>
+            <if test="isTop!=null">isTop=#{isTop},</if>
+            <if test="grade!=null">grade=#{grade},</if>
+            <if test="refinement!=null">refinement=#{refinement},</if>
+            <if test="user_id!=null">user_id=#{user_id},</if>
+            <if test="category_id!=null">category_id=#{category_id},</if>
+        </trim>
+        where id = #{id};
+    </update>
+
+    <!--根据id删除文章-->
+    <delete id="deleteArticleById" >
+       delete from bbs.article where id = #{id};
+    </delete>
+</mapper>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index/common/header :: head(~{::title})">
+  <title>用户主页</title>
+</head>
+<body style="margin-top: 65px;">
+
+<div th:replace="index/common/navbar :: navbar(1)"></div>
+
+<div class="fly-home fly-panel" style="background-image: url();">
+  <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="遇见">
+  <i class="iconfont icon-renzheng" title="Fly社区认证"></i>
+  <h1>
+    <cite th:text="${user.getNickname()}">遇见</cite>
+    <i class="iconfont icon-nan"></i>
+    <!-- <i class="iconfont icon-nv"></i>  -->
+    <i class="layui-badge fly-badge-vip" th:if="${user.getStatus()}==0">用户</i>
+    <i class="layui-badge fly-badge-vip" th:if="${user.getStatus()}==1">VIP</i>
+    <i class="layui-badge fly-badge-vip" th:if="${user.getStatus()}==2">SVIP</i>
+    <!--
+    <span style="color:#c00;">（管理员）</span>
+    <span style="color:#5FB878;">（社区之光）</span>
+    <span>（该号已被封）</span>
+    -->
+  </h1>
+
+  <p style="padding: 10px 0; color: #5FB878;">认证信息：layui 作者</p>
+
+  <p class="fly-home-info">
+    <!--<i class="iconfont icon-kiss" title="飞吻"></i><span style="color: #FF7200;">66666 飞吻</span>-->
+    <span class="fly-list-kiss layui-hide-xs" title="积分"><i class="iconfont icon-kiss"></i><span th:text="${user.getIntegral()}"></span> </span>
+    <!--<i class="iconfont icon-shijian"></i><span>2015-6-17 加入</span>
+    <i class="iconfont icon-chengshi"></i><span>来自杭州</span>-->
+  </p>
+
+  <p class="fly-home-sign" th:text="${user.getSignature()}">（人生仿若一场修行）</p>
+
+  <div class="fly-sns" data-user="">
+    <a href="javascript:;" class="layui-btn layui-btn-primary fly-imActive" data-type="addFriend">加为好友</a>
+    <a href="javascript:;" class="layui-btn layui-btn-normal fly-imActive" data-type="chat">发起会话</a>
+  </div>
+
+</div>
+
+<div class="layui-container">
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-md6 fly-home-jie">
+      <div class="fly-panel">
+        <h3 class="fly-panel-title"> <span th:text="${user.getNickname()}"></span> 最近的发帖</h3>
+        <ul class="fly-panel-main fly-list-static" th:each="article: ${articles}">
+          <li>
+            <span class="layui-badge fly-jing" th:if="${article.getRefinement()}==1">精</span>
+            <a th:href="@{/article/detail/{id}(id=${article.getId()})}" class="jie-title" th:text="${article.getTitle()}"> 基于 layui 的极简社区页面模版</a>
+            <i th:text="${#dates.format(article.getCreateTime(),'yyyy-MM-dd')}">刚刚</i>
+            <em class="layui-hide-xs"><span th:text="${article.getGoodNum()}"></span>赞/<span th:text="${article.getCommentNum()}"></span>答</em>
+          </li>
+
+          <!-- <div class="fly-none" style="min-height: 50px; padding:30px 0; height:auto;"><i style="font-size:14px;">没有发表任何求解</i></div> -->
+        </ul>
+      </div>
+    </div>
+    
+    <div class="layui-col-md6 fly-home-da">
+      <div class="fly-panel">
+        <h3 class="fly-panel-title"> <span th:text="${user.getNickname()}"></span>  最近的评论</h3>
+        <ul class="fly-panel-main fly-list-static" th:each="comment: ${comments}">
+          <li>
+            <p>
+            <span th:text="${#dates.format(comment.getComment_time(),'yyyy-MM-dd')}"></span>发表评论：
+            <a th:href="@{/article/detail/{id}(id=${comment.getArticle_id()})}" th:text="${comment.getComment_content()}">tips能同时渲染多个吗?</a>
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer th:replace="index/common/footer :: footer" ></footer>
+
+</body>
+</html>

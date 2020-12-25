@@ -1,0 +1,28 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>分类的导航栏</title>
+</head>
+<body>
+<div th:fragment="category" class="fly-panel fly-column">
+    <div class="layui-container">
+        <ul class="layui-clear" th:each="category: ${categories}" style="display: inline-block;">
+            <li style=" display: inline-block;"><a th:href="@{/category/{id}(id=${category.getId()})}"  th:text="${category.getName()}" style=" display: inline-block;">分类一</a></li>
+        </ul>
+        <!-- 用户登入后显示 -->
+        <ul  style="display: inline-block;">
+            <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"  th:unless="${#strings.isEmpty(session.userName)}"><a th:href="@{/user/home}">我发表的贴</a></li>
+            <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"  th:unless="${#strings.isEmpty(session.userName)}"><a th:href="@{/user/home}">我的评论</a></li>
+        </ul>
+
+        <div class="fly-column-right layui-hide-xs" th:unless="${#strings.isEmpty(session.userName)}">
+            <span class="fly-search"><i class="layui-icon"></i></span>
+            <a th:href="@{/article/addPage}" class="layui-btn">发表新帖</a>
+        </div>
+        <div class="layui-hide-sm layui-show-xs-block" style="margin-top: -10px; padding-bottom: 10px; text-align: center;">
+            <a href="jie/add.html" class="layui-btn">发表新帖</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

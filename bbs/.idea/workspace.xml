@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="bbs:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1f41e53e-70f3-4c2a-91ab-c43c1118cc96" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\Java\Environment\apache-maven-3.6.3\maven-repo" />
+        <option name="mavenHome" value="C:\Users\31215\.m2\wrapper\dists\apache-maven-3.6.3-bin\1iopthnavndlasol9gbrbg6bf2\apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="D:\Java\Environment\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <hideBySeverity>
+      <option value="300" />
+    </hideBySeverity>
+  </component>
+  <component name="ProjectId" id="1dc0euYrkJDbdq9H1Z8pWEZ36qG" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.20114942" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Language Defaults" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/src/main/resources/static/1.js" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Desktop\专业实训\bbs\src\main\resources\templates\index" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.yujian.controller" />
+      <recent name="com.yujian.mapper" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Desktop\专业实训\bbs" />
+      <recent name="C:\Users\Administrator\Desktop\专业实训\bbs\src\main\resources\static\upload" />
+      <recent name="C:\Users\Administrator\Desktop\专业实训\bbs\src\main\java\com\yujian" />
+      <recent name="C:\Users\Administrator\Desktop\专业实训\bbs\src\main\resources\static\css" />
+      <recent name="C:\Users\Administrator\Desktop\专业实训\bbs\src\main\resources\static\lib" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.BbsApplication">
+    <configuration name="BbsApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bbs" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yujian.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.yujian" />
+      <option name="MAIN_CLASS_NAME" value="com.yujian.BbsApplicationTests" />
+      <option name="METHOD_NAME" value="contextLoads" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BbsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="bbs" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yujian.BbsApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.BbsApplicationTests.contextLoads" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1f41e53e-70f3-4c2a-91ab-c43c1118cc96" name="Default Changelist" comment="" />
+      <created>1592709172537</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1592709172537</updated>
+      <workItem from="1592709176401" duration="2787000" />
+      <workItem from="1592732945176" duration="17592000" />
+      <workItem from="1592779186062" duration="47244000" />
+      <workItem from="1592865944289" duration="49725000" />
+      <workItem from="1592956607793" duration="92678000" />
+      <workItem from="1593208030560" duration="7694000" />
+      <workItem from="1593301068616" duration="2589000" />
+      <workItem from="1593309682054" duration="7675000" />
+      <workItem from="1593353401107" duration="1551000" />
+      <workItem from="1593388170423" duration="156000" />
+      <workItem from="1593400789940" duration="3895000" />
+      <workItem from="1593471902585" duration="169000" />
+      <workItem from="1593473092236" duration="23028000" />
+      <workItem from="1608691851807" duration="4442000" />
+      <workItem from="1608815946398" duration="2478000" />
+      <workItem from="1608901401373" duration="2406000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="249" y="6" key="#Project_Structure" timestamp="1608692894298">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="249" y="6" key="#Project_Structure/0.0.1536.864@0.0.1536.864" timestamp="1608692894298" />
+    <state x="499" y="220" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1608901518672">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="499" y="220" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.864@0.0.1536.864" timestamp="1608901518672" />
+    <state x="549" y="185" key="FileChooserDialogImpl" timestamp="1608901590267">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="549" y="185" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1608901590267" />
+    <state width="1493" height="168" key="GridCell.Tab.0.bottom" timestamp="1608817428249">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="168" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1608817428249" />
+    <state width="1493" height="168" key="GridCell.Tab.0.center" timestamp="1608817428249">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="168" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1608817428249" />
+    <state width="1493" height="168" key="GridCell.Tab.0.left" timestamp="1608817428246">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="168" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1608817428246" />
+    <state width="1493" height="168" key="GridCell.Tab.0.right" timestamp="1608817428249">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="168" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1608817428249" />
+    <state width="1493" height="168" key="GridCell.Tab.1.bottom" timestamp="1608817428250">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="168" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1608817428250" />
+    <state width="1493" height="168" key="GridCell.Tab.1.center" timestamp="1608817428249">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="168" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1608817428249" />
+    <state width="1493" height="168" key="GridCell.Tab.1.left" timestamp="1608817428249">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="168" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1608817428249" />
+    <state width="1493" height="168" key="GridCell.Tab.1.right" timestamp="1608817428249">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="168" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1608817428249" />
+    <state x="249" y="6" key="SettingsEditor" timestamp="1608901597266">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="249" y="6" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1608901597266" />
+  </component>
+</project>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yujian.mapper.CommentMapper">
+    <select id="queryCommentsByArticleId" resultType="com.yujian.dto.CommentInfo">
+        select * from bbs.comment c,bbs.user u ,bbs.article a where article_id=#{article_id} and c.user_id=u.id and article_id=a.id;
+    </select>
+
+    <insert id="addComment" parameterType="map">
+        insert into bbs.comment (user_id, article_id,comment_content,comment_time) values (#{user_id},#{article_id},#{comment_content},#{comment_time});
+    </insert>
+    <delete id="deleteCommentById" >
+        delete from bbs.comment where id = #{id};
+    </delete>
+
+    <select id="queryCommentByUserId" resultType="com.yujian.pojo.Comment">
+        select * from bbs.comment where user_id=#{user_id} order by comment_time desc LIMIT 10;
+    </select>
+    <!--==============后台============-->
+    <select id="queryAllCommentInfo" resultType="com.yujian.dto.CommentInfo">
+        select * from bbs.comment c,bbs.user u,bbs.article a where article_id=a.id and c.user_id=u.id;
+    </select>
+    <!--修改-->
+    <update id="updateCommentById" parameterType="map">
+        update bbs.comment
+        <trim prefix="set" suffixOverrides=",">
+            <if test="comment_time!=null">comment_time=#{comment_time},</if>
+            <if test="comment_content!=null">comment_content=#{comment_content},</if>
+        </trim>
+        where id = #{id};
+    </update>
+    <select id="queryCommentsById" resultType="com.yujian.dto.CommentInfo">
+        select * from bbs.comment c,bbs.user u ,bbs.article a where c.id=#{id} and c.user_id=u.id and article_id=a.id;
+    </select>
+</mapper>
+

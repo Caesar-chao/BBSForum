@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index/common/header :: head(~{::title})">
+  <title>首页</title>
+  <style type="text/css">
+    ol>li{
+      list-style: decimal;
+    }
+    ul>li{
+      list-style: disc;
+    }
+  </style>
+</head>
+<body>
+<!--导航栏 -->
+<div th:replace="index/common/navbar :: navbar(1)"></div>
+
+<div class="layui-container fly-marginTop">
+
+  <div class="fly-panel" pad20 style="padding-top: 5px;">
+    <!--<div class="fly-none">没有权限</div>-->
+    <div class="layui-form layui-form-pane">
+      <div class="layui-tab layui-tab-brief" lay-filter="user">
+        <ul class="layui-tab-title">
+          <li class="layui-this">发表新帖<!-- 编辑帖子 --></li>
+        </ul>
+        <div class="layui-form layui-tab-content" id="LAY_ucm" style="padding: 20px 0;">
+          <div class="layui-tab-item layui-show">
+            <form  method="post">
+              <div class="layui-row layui-col-space15 layui-form-item">
+                <div class="layui-col-md3">
+                  <label class="layui-form-label">分类</label>
+                  <div class="layui-input-block " lay-filter="myDiv">
+                    <select  name="category_id">
+                      <option th:each="category: ${categories}" th:value="${category.getId()}" th:text="${category.getName() }"></option>
+                    </select>
+                  </div>
+                </div>
+                <div class="layui-col-md9">
+                  <label for="L_title"  class="layui-form-label">标题</label>
+                  <div class="layui-input-block">
+                    <input type="text" id="L_title" name="title" required lay-verify="required" autocomplete="off" class="layui-input">
+                    <!-- <input type="hidden" name="id" value="{{d.edit.id}}"> -->
+                  </div>
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <div class="layui-inline">
+                  <label class="layui-form-label" for="L_summary">简介</label>
+                  <div class="layui-input-inline" >
+                    <input type="text" id="L_summary" name="summary" required lay-verify="required" placeholder="文章的简介" autocomplete="off" class="layui-input">
+                  </div>
+
+                </div>
+              </div>
+              <div class="layui-row layui-col-space15 layui-form-item layui-hide" id="LAY_quiz">
+                <div class="layui-col-md3">
+                  <label class="layui-form-label">所属产品</label>
+                  <div class="layui-input-block">
+                    <select name="project">
+                      <option></option>
+                      <option value="layui">layui</option>
+                      <option value="独立版layer">独立版layer</option>
+                      <option value="独立版layDate">独立版layDate</option>
+                      <option value="LayIM">LayIM</option>
+                      <option value="Fly社区模板">Fly社区模板</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="layui-col-md3">
+                  <label class="layui-form-label" for="L_version">版本号</label>
+                  <div class="layui-input-block">
+                    <input type="text" id="L_version" value="" name="version" autocomplete="off" class="layui-input">
+                  </div>
+                </div>
+                <div class="layui-col-md6">
+                  <label class="layui-form-label" for="L_browser">浏览器</label>
+                  <div class="layui-input-block">
+                    <input type="text" id="L_browser"  value="" name="browser" placeholder="浏览器名称及版本，如：IE 11" autocomplete="off" class="layui-input">
+                  </div>
+                </div>
+              </div>
+              <div class="layui-form-item layui-form-text">
+                <div class="layui-input-block" id="md-content">
+                  <textarea id="L_content" name="content" required lay-verify="required" placeholder="详细描述" class="layui-textarea fly-editor" style="height: 260px;">
+                    [TOC]
+
+#### Disabled options
+
+- TeX (Based on KaTeX);
+- Emoji;
+- Task lists;
+- HTML tags decode;
+- Flowchart and Sequence Diagram;
+                  </textarea>
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <div class="layui-inline">
+                  <label class="layui-form-label">文章权限</label>
+
+                  <div class="layui-input-inline" style="width: 190px;">
+                    <!--<select name="grade" th:each="category: ${categories}">
+                      <option value="20" th:text="${category.getName()}">20</option>
+                    </select>-->
+                    <select name="grade" th:if="${status}==0">
+                      <option></option>
+                      <option value="0">普通用户可见</option>
+                    </select>
+                    <select name="grade" th:if="${status}==1">
+                      <option></option>
+                      <option value="0">普通用户可见</option>
+                      <option value="1">VIP可见</option>
+                    </select>
+                    <select name="grade" th:if="${status}==2">
+                      <option></option>
+                      <option value="0">普通用户可见</option>
+                      <option value="1">VIP可见</option>
+                      <option value="2">SVIP可见</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <button class="layui-btn" lay-filter="add" lay-submit>立即发布</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  layui.use('form', function(){
+    var form = layui.form;
+    form.render();
+  });
+</script>
+<footer th:replace="index/common/footer :: footer" ></footer>
+<script>
+  //初始化Markdown编辑器
+  var contentEditor;
+  $(function() {
+    contentEditor = editormd("md-content", {
+      width   : "100%",
+      height  : 640,
+      syncScrolling : "single",
+      path    : "/lib/editormd/lib/",
+      //这个配置在simple.html中并没有，但是为了能够提交表单，使用这个配置可以让构造出来的HTML代码直接在第二个隐藏的textarea域中，方便post提交表单。
+      saveHTMLToTextarea: true,
+      /*上传图片相关配置如下*/
+      imageUpload       : true,//设置为true后就开启了图片文件上传
+      imageFormats      : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+      imageUploadURL    : "/file",
+      /*图片上传成功的回调函数*/
+      upload:function (obj) {
+        console.log(obj);
+      }
+    });
+  });
+
+  $(function  () {
+    layui.use('form', function(){
+      var form = layui.form;
+      // layer.msg('玩命卖萌中', function(){
+      //   //关闭后的操作
+      //   });
+      //监听提交
+      form.on('submit(add)', function(data){
+        console.log(data.field);
+        $.ajax({
+          url:"/article/add",
+          type:"POST",
+          data:data.field,
+          dataType:'json',
+          success:function(res){
+            console.log(res);
+            layer.msg(res.message,{time:1500},function(){
+              if(res.success==1){
+                location.href ="/index";
+              }
+            });
+          }
+        });
+        return false;
+      });
+    });
+  })
+</script>
+</body>
+</html>

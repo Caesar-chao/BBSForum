@@ -1,0 +1,51 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/common/header :: head(~{::title})">
+    <title>论坛后台管理系统</title>
+    <meta charset="utf-8">
+</head>
+<body class="login-bg">
+    <div class="login layui-anim layui-anim-up">
+        <div class="message">湖畔论坛后台管理系统</div>
+        <div id="darkbannerwrap"></div>
+        <form method="post" class="layui-form">
+            <input name="username" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
+            <hr class="hr15">
+            <input name="password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
+            <hr class="hr15">
+            <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
+            <hr class="hr20" >
+        </form>
+    </div>
+    <!-- 底部结束 -->
+    <script>
+        $(function  () {
+            layui.use('form', function(){
+                var form = layui.form;
+                // layer.msg('玩命卖萌中', function(){
+                //   //关闭后的操作
+                //   });
+                //监听提交
+                form.on('submit(login)', function(data){
+                    console.log(data.field);
+                    $.ajax({
+                        url:"/admin/login",
+                        type:"POST",
+                        data:data.field,
+                        dataType:'json',
+                        success:function(res){
+                            console.log(res);
+                            layer.msg(res.message,{time:1500},function(){
+                                if(res.success==1){
+                                    location.href ="/admin/index";
+                                }
+                            });
+                        }
+                    });
+                    return false;
+                });
+            });
+        })
+    </script>
+</body>
+</html>
